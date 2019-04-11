@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path"
 	"path/filepath"
 )
 
@@ -211,6 +212,10 @@ func actionUpload(
 		defer file.Close()
 
 		filename := filepath.Base(handler.Filename)
+		ext := path.Ext(filename)
+		if ext != "jpeg" {
+			return ctx.JSON(http.StatusBadRequest, false)
+		}
 		err = filer.Append(filename, file)
 		if err != nil {
 			return err
