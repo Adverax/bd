@@ -84,7 +84,7 @@ func main() {
 		DSN: []*sql.DSN{
 			{
 				Host:     "127.0.0.1",
-				Database: "mydatabase",
+				Database: "database",
 				Username: "username",
 				Password: "password",
 			},
@@ -144,5 +144,5 @@ func main() {
 	)
 
 	// Starting server
-	log.Fatal(e.Start(":80"))
+	log.Fatal(e.Start(":8080"))
 }
